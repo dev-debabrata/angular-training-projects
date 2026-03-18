@@ -1,0 +1,20 @@
+.counter-box {
+  width: 300px;
+  margin: 30px auto;
+  padding: 20px;
+  text-align: center;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+input {
+  padding: 8px;
+  width: 80%;
+  margin-bottom: 15px;
+}
