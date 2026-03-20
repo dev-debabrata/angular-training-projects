@@ -15,11 +15,12 @@ export class Child implements OnInit, OnDestroy {
   @Output() countChanged = new EventEmitter<number>();
 
   count: number = 0;
+  counterLabel: string = '';
 
   ngOnInit(): void {
     this.count = this.initialValue;
+    this.counterLabel = this.label;
     this.countChanged.emit(this.count);
-    console.log('Counter initialized');
   }
 
   increment() {
@@ -33,7 +34,7 @@ export class Child implements OnInit, OnDestroy {
   }
 
   reset() {
-    this.count = 0;
+    this.count = this.initialValue;
     this.countChanged.emit(this.count);
   }
 

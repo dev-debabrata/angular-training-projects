@@ -1,12 +1,12 @@
 <div class="counter-box">
-  <input [(ngModel)]="label" placeholder="Counter Label" />
+  <input [(ngModel)]="counterLabel" placeholder="Counter Label" />
 
-  <h2>{{ label }}</h2>
+  <h2>{{ counterLabel }}</h2>
 
   <h1>{{ count }}</h1>
 
   <button (click)="decrement()">➖ Decrease</button>
   <button (click)="increment()">➕ Increase</button>
 
-  <button (click)="reset()">🔄 Reset</button>
+  <button (click)="reset()">Reset</button>
 </div>
