@@ -1,11 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-loader',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './loader.html',
   styleUrl: './loader.css',
 })
 export class Loader {
-
+  // loading = true;
+  // ngOnInit() {
+  //   setTimeout(() => {
+  //     this.loading = false;
+  //   }, 5000); // simulate API delay
+  // }
 }

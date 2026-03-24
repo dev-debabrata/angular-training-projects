@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { catchError, of } from 'rxjs';
 import { UserService } from '../../services/user.service';
@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './users.html',
   styleUrl: './users.css',
 })
-export class Users {
+export class Users implements OnInit {
   // constructor(private router: Router) {}
 
   // viewDetails(id: number) {
@@ -35,7 +35,7 @@ export class Users {
   ngOnInit() {
     setTimeout(() => {
       this.loading = false;
-    }, 2000);
+    }, 1000);
   }
   viewDetails(id: number) {
     this.router.navigate(['/user', id]);
