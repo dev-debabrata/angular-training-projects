@@ -22,21 +22,21 @@ export class UserDetails implements OnInit {
   loading = true;
   error = false;
 
-  user$!: Observable<User | null>;
+  // user$!: Observable<User | null>;
+  users: User | null = null;
 
   ngOnInit(): void {
     const userId = Number(this.route.snapshot.paramMap.get('id'));
 
-    this.user$ = this.userService.getUserById(userId).pipe(
-      delay(1000),
-      tap(() => {
+    this.userService.getUserById(userId).subscribe({
+      next: (res) => {
         this.loading = false;
-      }),
-      catchError(() => {
+        this.users = res;
+      },
+      error: (err) => {
         this.error = true;
         this.loading = false;
-        return of(null);
-      }),
-    );
+      },
+    });
   }
 }

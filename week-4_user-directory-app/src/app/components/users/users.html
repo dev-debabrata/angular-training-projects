@@ -1,4 +1,4 @@
-@if (loading) {
+<!-- @if (loading) {
   <app-loader />
 } @else if (error) {
   <app-error />
@@ -12,9 +12,6 @@
         <th>Email</th>
         <th>Phone</th>
         <th>Action</th>
-        <!-- <th>Website</th>
-        <th>City</th>
-        <th>Company</th> -->
       </tr>
     </thead>
 
@@ -29,17 +26,14 @@
           <td>
             <button (click)="viewDetails(user.id)" class="view-button">View Details</button>
           </td>
-          <!-- <td>{{ user.website }}</td>
-          <td>{{ user.address.city }}</td>
-          <td>{{ user.company.name }}</td> -->
         </tr>
       }
     </tbody>
   </table>
 } @else {
   <p>No users found!</p>
-}
-<!-- 
+} -->
+
 @if (loading) {
   <app-loader />
 }
@@ -48,7 +42,7 @@
   <app-error />
 }
 
-@if (users$ | async; as users) {
+@if (users.length > 0) {
   @if (!loading && !error) {
     <table class="user-table container">
       <thead>
@@ -78,4 +72,4 @@
       </tbody>
     </table>
   }
-} -->
+}

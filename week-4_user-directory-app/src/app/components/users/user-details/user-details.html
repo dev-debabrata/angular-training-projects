@@ -6,29 +6,29 @@
   <app-error />
 }
 
-@if (user$ | async; as user) {
-  @if (!loading && !error && user) {
+@if (users) {
+  @if (!loading && !error && users) {
     <div class="card">
-      <h2>{{ user.name }}</h2>
-      <p><strong>Username:</strong> {{ user.username }}</p>
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <p><strong>Phone:</strong> {{ user.phone }}</p>
-      <p><strong>Website:</strong> {{ user.website }}</p>
+      <h2>{{ users.name }}</h2>
+      <p><strong>Username:</strong> {{ users.username }}</p>
+      <p><strong>Email:</strong> {{ users.email }}</p>
+      <p><strong>Phone:</strong> {{ users.phone }}</p>
+      <p><strong>Website:</strong> {{ users.website }}</p>
 
       <hr />
 
       <h3>Address</h3>
       <p>
-        {{ user.address.street }}, {{ user.address.suite }}<br />
-        {{ user.address.city }} - {{ user.address.zipcode }}
+        {{ users.address.street }}, {{ users.address.suite }}<br />
+        {{ users.address.city }} - {{ users.address.zipcode }}
       </p>
 
       <hr />
 
       <h3>Company</h3>
-      <p><strong>Name:</strong> {{ user.company.name }}</p>
-      <p><strong>Catchphrase:</strong> {{ user.company.catchPhrase }}</p>
-      <p><strong>Business:</strong> {{ user.company.bs }}</p>
+      <p><strong>Name:</strong> {{ users.company.name }}</p>
+      <p><strong>Catchphrase:</strong> {{ users.company.catchPhrase }}</p>
+      <p><strong>Business:</strong> {{ users.company.bs }}</p>
     </div>
   }
 }

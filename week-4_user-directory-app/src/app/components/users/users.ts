@@ -26,9 +26,10 @@ export class Users implements OnInit {
   ngOnInit(): void {
     this.userService.getUsers().subscribe({
       next: (res) => {
-        this.loading = true;
+        this.users = res;
+        // this.loading = false;
         this.error = false;
-        console.log(res);
+        console.log(this.users);
       },
       error: (err) => {
         this.error = true;
