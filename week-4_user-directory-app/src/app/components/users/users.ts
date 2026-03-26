@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
@@ -17,6 +17,7 @@ import { User } from './user.model';
 export class Users implements OnInit {
   private router = inject(Router);
   private userService = inject(UserService);
+  private cdr = inject(ChangeDetectorRef);
 
   loading = true;
   error = false;
@@ -26,14 +27,17 @@ export class Users implements OnInit {
   ngOnInit(): void {
     this.userService.getUsers().subscribe({
       next: (res) => {
+        this.loading = false;
         this.users = res;
-        // this.loading = false;
+
         this.error = false;
+        this.cdr.detectChanges();
         console.log(this.users);
       },
       error: (err) => {
         this.error = true;
         this.loading = false;
+        this.cdr.detectChanges();
         console.log(err);
       },
     });
@@ -44,6 +48,7 @@ export class Users implements OnInit {
   }
 }
 
+///// this one pipe and ovserble logic
 // users$ = of<User[]>([]);
 
 //  ngOnInit(): void {

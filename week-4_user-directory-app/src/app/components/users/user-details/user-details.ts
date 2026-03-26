@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { Loader } from '../../loader/loader';
 import { Error } from '../../error/error';
 import { ActivatedRoute } from '@angular/router';
@@ -17,6 +17,7 @@ import { UserService } from '../../../services/user.service';
 export class UserDetails implements OnInit {
   private route = inject(ActivatedRoute);
   private userService = inject(UserService);
+  private cdr = inject(ChangeDetectorRef);
 
   loading = true;
   error = false;
@@ -30,15 +31,18 @@ export class UserDetails implements OnInit {
       next: (res) => {
         this.loading = false;
         this.users = res;
+        this.cdr.detectChanges();
       },
       error: (err) => {
         this.error = true;
         this.loading = false;
+        this.cdr.detectChanges();
       },
     });
   }
 }
 
+///// this one pipe and ovserble logic
 // user$!: Observable<User | null>;
 
 // ngOnInit(): void {
