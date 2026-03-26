@@ -4,7 +4,6 @@ import { Loader } from '../../loader/loader';
 import { Error } from '../../error/error';
 import { ActivatedRoute } from '@angular/router';
 
-import { catchError, Observable, of, tap, delay } from 'rxjs';
 import { User } from '../user.model';
 import { UserService } from '../../../services/user.service';
 
@@ -22,7 +21,6 @@ export class UserDetails implements OnInit {
   loading = true;
   error = false;
 
-  // user$!: Observable<User | null>;
   users: User | null = null;
 
   ngOnInit(): void {
@@ -40,3 +38,21 @@ export class UserDetails implements OnInit {
     });
   }
 }
+
+// user$!: Observable<User | null>;
+
+// ngOnInit(): void {
+//   const userId = Number(this.route.snapshot.paramMap.get('id'));
+
+//   this.user$ = this.userService.getUserById(userId).pipe(
+//     delay(1000),
+//     tap(() => {
+//       this.loading = false;
+//     }),
+//     catchError(() => {
+//       this.error = true;
+//       this.loading = false;
+//       return of(null);
+//     }),
+//   );
+// }

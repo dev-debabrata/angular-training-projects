@@ -5,10 +5,22 @@
 }
 
 .user-table {
-  width: 70%;
+  width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
+
+/* .container {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.user-table {
+  width: 70%;
+  border-collapse: collapse;
+  table-layout: fixed;
+} */
 
 .user-table th,
 .user-table td {
