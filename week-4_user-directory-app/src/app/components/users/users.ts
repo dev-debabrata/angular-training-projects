@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
@@ -17,28 +17,21 @@ import { User } from './user.model';
 export class Users implements OnInit {
   private router = inject(Router);
   private userService = inject(UserService);
-  private cdr = inject(ChangeDetectorRef);
 
-  loading = true;
-  error = false;
-
-  users: User[] = [];
+  loading = signal(true);
+  error = signal(false);
+  users = signal<User[]>([]);
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe({
       next: (res) => {
-        this.loading = false;
-        this.users = res;
-
-        this.error = false;
-        this.cdr.detectChanges();
-        console.log(this.users);
+        this.users.set(res);
+        this.loading.set(false);
+        this.error.set(false);
       },
-      error: (err) => {
-        this.error = true;
-        this.loading = false;
-        this.cdr.detectChanges();
-        console.log(err);
+      error: () => {
+        this.error.set(true);
+        this.loading.set(false);
       },
     });
   }
@@ -47,6 +40,33 @@ export class Users implements OnInit {
     this.router.navigate(['/user', id]);
   }
 }
+
+////////////////////  this one ChangeDetectorRef logic
+// private cdr = inject(ChangeDetectorRef);
+
+//   loading = true;
+//   error = false;
+
+//   users: User[] = [];
+
+//   ngOnInit(): void {
+//     this.userService.getUsers().subscribe({
+//       next: (res) => {
+//         this.loading = false;
+//         this.users = res;
+
+//         this.error = false;
+//         this.cdr.detectChanges();
+//         console.log(this.users);
+//       },
+//       error: (err) => {
+//         this.error = true;
+//         this.loading = false;
+//         this.cdr.detectChanges();
+//         console.log(err);
+//       },
+//     });
+//   }
 
 ///// this one pipe and ovserble logic
 // users$ = of<User[]>([]);
