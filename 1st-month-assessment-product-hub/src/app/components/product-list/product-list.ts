@@ -11,6 +11,7 @@ import { Highlight } from '../../directives/highlight';
 
 @Component({
   selector: 'app-product-list',
+  standalone: true,
   imports: [Loader, Error, FormsModule, CommonModule, TruncatePipe, Highlight],
   templateUrl: './product-list.html',
   styleUrl: './product-list.css',
