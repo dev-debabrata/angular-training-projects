@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'truncatePipe',
+  name: 'truncate',
 })
-export class TruncatePipePipe implements PipeTransform {
+export class TruncatePipe implements PipeTransform {
 
   transform(value: unknown, ...args: unknown[]): unknown {
     return null;

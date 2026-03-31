@@ -1,1 +1,39 @@
-<p>product-list works!</p>
+@if (isLoading) {
+  <app-loader />
+} @else if (errorMsg) {
+  <app-error />
+} @else {
+  <div class="search-input">
+    <input type="text" placeholder="Search product..." [(ngModel)]="searchTerm" />
+  </div>
+
+  <div class="product-list">
+    @for (product of filteredProducts; track product.id) {
+      <div
+        class="card"
+        [ngClass]="{ 'low-stock': product.stock > 0 && product.stock < 3 }"
+        appHighlight
+        (click)="viewDetails(product.id)"
+      >
+        <div class="img-container">
+          <img [src]="product.images" [alt]="product.title" class="product-img" />
+        </div>
+        <h3>{{ product.title }}</h3>
+
+        <p>{{ product.description | truncate: 25 }}</p>
+
+        <p><strong>Price:</strong> {{ product.price | currency: 'INR' }}</p>
+
+        <div class="status-section">
+          <div class="stock-message">
+            @if (product.stock === 0) {
+              <span class="out-of-stock">Out of Stock</span>
+            } @else if (product.stock < 3) {
+              <span class="low-stock-text">⚠️ Only few left</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+}
