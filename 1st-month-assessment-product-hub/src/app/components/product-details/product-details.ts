@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
@@ -19,10 +19,11 @@ export class ProductDetails {
   private route = inject(ActivatedRoute);
   private productService = inject(ProductService);
 
-  isLoading = true;
-  errorMsg = false;
-  stars: string[] = [];
   product: Product | null = null;
+  isLoading = signal(true);
+  errorMsg = signal(false);
+
+  stars: string[] = [];
 
   showAllReviews = false;
 
@@ -31,14 +32,14 @@ export class ProductDetails {
 
     this.productService.getProductById(productId).subscribe({
       next: (res) => {
-        this.isLoading = false;
+        this.isLoading.set(false);
         this.product = res;
         console.log(res);
         this.stars = Rating.getStars(this.product.rating);
       },
       error: (err) => {
-        this.errorMsg = true;
-        this.isLoading = false;
+        this.errorMsg.set(true);
+        this.isLoading.set(false);
         console.error(err);
       },
     });
