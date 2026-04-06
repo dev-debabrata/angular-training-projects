@@ -1,11 +1,10 @@
 .post-container {
-  max-width: 77%;
+  max-width: 80%;
   margin: auto;
   padding: 26px;
-  /* background: #f9fafb; */
   background: #f9fafb;
-
-  /* min-height: 100vh; */
+  box-sizing: border-box;
+  min-height: 75vh;
 }
 
 .page-title {

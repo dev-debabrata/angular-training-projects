@@ -1,5 +1,7 @@
 @if (isLoading()) {
-  <app-loader />
+  <div class="post-container">
+    <app-loader />
+  </div>
 } @else if (errorMsg()) {
   <app-error />
 } @else {

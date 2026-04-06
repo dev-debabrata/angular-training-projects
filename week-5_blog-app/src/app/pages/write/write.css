@@ -1,10 +1,11 @@
 .write {
   max-width: 80%;
   margin: auto;
-  min-height: 80vh;
+  /* min-height: 80vh; */
   background: #f9fafb;
   padding: 2rem 0;
 }
+
 .write-container {
   max-width: 700px;
   margin: 0 auto;
@@ -13,7 +14,18 @@
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
+  min-height: 500px;
+  box-sizing: border-box;
 }
+/* .write-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+} */
 
 /* Heading */
 .write-container h2 {
