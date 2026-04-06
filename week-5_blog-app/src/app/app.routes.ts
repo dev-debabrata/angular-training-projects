@@ -40,11 +40,6 @@ export const routes: Routes = [
       },
     ],
   },
-  // {
-  //   path: 'posts/:id',
-  //   loadComponent: () => import('./pages/posts/post-detail/post-detail').then((m) => m.PostDetail),
-  //   data: { breadcrumb: 'Post Details' },
-  // },
   { path: 'about', component: About, data: { breadcrumb: 'About' } },
   {
     path: 'write',
