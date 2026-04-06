@@ -11,12 +11,18 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class Navbar {
   isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  showMenu = false;
 
   constructor(private router: Router) {}
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
+  }
 
   logout() {
     localStorage.removeItem('isLoggedIn');
     this.isLoggedIn = false;
+    this.showMenu = false;
     this.router.navigate(['/']);
   }
 }

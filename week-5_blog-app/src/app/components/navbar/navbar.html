@@ -15,17 +15,31 @@
       </a>
     </div>
 
-    <a routerLink="/" routerLinkActive="active" class="nav-name">CodeBreeze</a>
+    <h2>CodeBreeze</h2>
 
     <div class="login-section">
       @if (!isLoggedIn) {
         <!-- <button (click)="showLogin = true">Login</button> -->
-        <a [routerLink]="isLoggedIn ? '/write' : '/login'" routerLinkActive="active" class="btn"
+        <a
+          [routerLink]="isLoggedIn ? '/write' : '/login'"
+          routerLinkActive="active"
+          class="btn secondary"
           >Login</a
         >
       } @else {
-        <!-- <span>Welcome, User!</span> -->
-        <button (click)="logout()">Logout</button>
+        <!-- <img (click)="logout()" src="/avatar.png" alt="" class="avatar-img" /> -->
+
+        <div class="avatar-container">
+          <img (click)="toggleMenu()" src="/avatar.png" alt="" class="avatar-img" />
+
+          @if (showMenu) {
+            <div class="dropdown">
+              <button (click)="logout()">Logout</button>
+            </div>
+          }
+        </div>
+
+        <!-- <button (click)="logout()">Logout</button> -->
       }
     </div>
   </div>
@@ -33,6 +47,7 @@
   <div class="navbar-item">
     <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
     <a routerLink="/posts" routerLinkActive="active">Posts</a>
+
     <a routerLink="/write" routerLinkActive="active">Write</a>
     <a routerLink="/about" routerLinkActive="active">About</a>
     <a routerLink="/contact" routerLinkActive="active">Contact</a>
